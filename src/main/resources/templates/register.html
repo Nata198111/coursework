@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form method="post" th:action="@{/register}" th:object="${userRegisterResponse}">
+    <label for="username">Enter username</label>
+    <input id="username" type="text" th:field="*{username}" placeholder="username"><br/>
+
+    <label for="name">Enter name</label>
+    <input id="name" type="text" th:field="*{name}" placeholder="name"><br/>
+
+    <label for="password">Enter password</label>
+    <input id="password" type="password" th:field="*{password}" placeholder="password"><br/>
+
+    <label for="passwordConfirmation">Confirm password</label>
+    <input id="passwordConfirmation" type="password" th:field="*{passwordConfirmation}" placeholder="Confirm password"><br/>
+
+    <button type="submit">Register</button>
+</form>
+<a th:href="@{/login}">Log in with existing account</a>
+</body>
+</html>
