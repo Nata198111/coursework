@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping("/")
     public String home(){
-        return "home";
-
+        return "redirect:/channels";
     }
 }

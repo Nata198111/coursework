@@ -1,25 +1,28 @@
 package com.example.coursework.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
-
+@Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "programme")
 public class Programme {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @DateTimeFormat
-    private LocalDateTime time;
+
     private String title;
     private String description;
 
+    private String time;
+
+    @ManyToOne
+    @JoinColumn(name = "channel_id")
+    private Channel channel;
 }

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/adminConsole/**").hasAuthority(Role.ADMIN.toString())
+                        .requestMatchers("/adminPage/**").hasAuthority(Role.ADMIN.toString())
                         .requestMatchers("/login/**", "/register/**").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -40,7 +41,12 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                         .successHandler((request, response, authentication) -> {
-                            response.sendRedirect("/");
+                            if (authentication.getAuthorities()
+                                    .contains(new SimpleGrantedAuthority(Role.ADMIN.toString()))) {
+                                response.sendRedirect("/adminPage");
+                            } else {
+                                response.sendRedirect("/channels");
+                            }
                         })
                 )
                 .logout((logout) -> logout
