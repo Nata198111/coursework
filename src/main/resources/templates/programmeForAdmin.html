@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Programme</title>
+</head>
+<body>
+<h1 th:text="${channel.title}"></h1>
+<div th:each="programme: ${channel.getProgrammes()}">
+  <p th:text="${'Title: ' + programme.title}"></p>
+  <p th:text="${'Description: ' + programme.description}"></p>
+  <p th:text="${'Time: ' + programme.time}"></p>
+
+  <a th:href="@{'/adminPage/editProgrammeByID/' + ${programme.id}}">Edit</a>
+  <hr>
+</div>
+<a th:href="@{/adminPage}">To channels</a>
+</body>
+</html>

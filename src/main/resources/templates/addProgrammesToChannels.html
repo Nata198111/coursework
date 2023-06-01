@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose channel to add programmes</title>
+</head>
+<body>
+<a th:href="@{/adminPage/addChannels}">Add channels</a>
+<div th:each="channel: ${channels}">
+  <h1 th:text="${channel.title}"></h1>
+  <p th:text="${channel.description}"></p>
+  <a th:href="@{'/adminPage/addProgrammes/' + ${channel.title}}">Add programmes</a>
+  <a th:href="@{'/adminPage/' +  ${channel.title}}">See programmes</a>
+  <form th:method="DELETE" th:action="@{'/adminPage/deleteProgrammes/' + ${channel.title}}">
+    <button type="submit">Delete programmes</button>
+  </form>
+  <form th:method="DELETE" th:action="@{'/adminPage/deleteChannel/' + ${channel.title}}">
+    <button type="submit">Delete channel</button>
+  </form>
+  <hr>
+
+</div>
+</body>
+</html>

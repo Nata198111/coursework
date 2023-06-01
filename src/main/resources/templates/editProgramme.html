@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit programme</title>
+</head>
+<body>
+<form th:method="PATCH" th:object="${addProgrammesFormResponse}"
+      th:action="@{'/adminPage/editProgrammeByID/' + ${programme.id}}">
+  <input placeholder="title" th:field="*{title}"><br/>
+  <input placeholder="description" th:field="*{description}"><br/>
+  <input placeholder="time" th:field="*{time}"><br/>
+  <button type="submit">Edit</button>
+</form>
+</body>
+</html>

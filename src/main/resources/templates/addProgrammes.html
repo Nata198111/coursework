@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add programmes</title>
+</head>
+<body>
+<form th:method="POST" th:object="${addProgrammesFormResponse}"
+      th:action="@{'/adminPage/addProgrammes/' + ${channel}}">
+    <input placeholder="title" th:field="*{title}"><br/>
+    <input placeholder="description" th:field="*{description}"><br/>
+    <input placeholder="time" th:field="*{time}"><br/>
+    <button type="submit">Add programme</button>
+</form>
+</body>
+</html>
