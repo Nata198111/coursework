@@ -139,4 +139,30 @@ public class AdminController {
         channelRepository.deleteByTitle(channelTitle);
         return "redirect:/adminPage";
     }
+
+    @GetMapping("/editChannelByID/{id}")
+    public String editChannel(@PathVariable("id") Long id,
+                                Model model) {
+        Channel channel = channelRepository.findById(id).get();
+
+        addChannelFormResponse.setTitle(channel.getTitle());
+        addChannelFormResponse.setDescription(channel.getDescription());
+
+        model.addAttribute("channel", channel);
+        model.addAttribute("addChannelFormResponse", addChannelFormResponse);
+        return "editChannels";
+    }
+
+    @PatchMapping("/editChannelByID/{id}")
+    public String processEditChannel(@PathVariable("id") Long id,
+                                       @ModelAttribute("addChannelFormResponse")
+                                       AddChannelFormResponse addChannelFormResponse) {
+        Channel channel = channelRepository.findById(id).get();
+
+        channel.setTitle(addChannelFormResponse.getTitle());
+        channel.setDescription(addChannelFormResponse.getDescription());
+
+        channelRepository.save(channel);
+        return "redirect:/adminPage";
+    }
 }

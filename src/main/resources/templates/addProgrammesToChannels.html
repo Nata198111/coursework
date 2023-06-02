@@ -67,12 +67,14 @@
   <p th:text="${channel.description}"></p>
   <a th:href="@{'/adminPage/addProgrammes/' + ${channel.title}}">Add programmes</a>
   <a th:href="@{'/adminPage/' +  ${channel.title}}">See programmes</a>
+
   <form th:method="DELETE" th:action="@{'/adminPage/deleteProgrammes/' + ${channel.title}}">
     <button type="submit">Delete programmes</button>
   </form>
   <form th:method="DELETE" th:action="@{'/adminPage/deleteChannel/' + ${channel.title}}">
     <button type="submit">Delete channel</button>
   </form>
+  <a th:href="@{'/adminPage/editChannelByID/' + ${channel.id}}" class="edit-link">Edit</a>
   <hr>
 </div>
 </body>

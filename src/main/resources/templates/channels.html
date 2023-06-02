@@ -68,11 +68,33 @@
             margin: 10px 0;
             line-height: 1.2;
         }
+
+        .filter-form {
+            margin-bottom: 20px;
+        }
+
+        .filter-form select {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1 class="channel-title" style="color: #fff;">Channels</h1>
+
+    <form class="filter-form" th:action="@{/channels/filterBy}" method="get">
+        <select name="filterParameter" aria-label="Type" onchange="this.form.submit()">
+            <option value="" disabled selected>Select filter type</option>
+            <option th:each="filterParameter : ${filterChannelsParameters}"
+                    th:value="${filterParameter}"
+                    th:text="${filterParameter}">
+            </option>
+        </select>
+    </form>
+
     <div class="channel-row">
         <div class="channel-card" th:each="channel: ${channels}">
             <a th:href="@{'/channels/' + ${channel.title}}">
