@@ -3,15 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Programme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .programme-card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #386a3a;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <h1 th:text="${channel.title}"></h1>
-    <div th:each="programme: ${channel.getProgrammes()}">
+<div class="programme-card">
+    <h1 th:text="${channel.title}"></h1>
+    <div th:each="programme: ${channel.getProgrammes()}" class="programme-card">
         <p th:text="${'Title: ' + programme.title}"></p>
         <p th:text="${'Description: ' + programme.description}"></p>
-         <p th:text="${'Time: ' + programme.time}"></p>
-        <hr>
+        <p th:text="${'Time: ' + programme.time}"></p>
     </div>
-  <a th:href="@{/channels}">To channels</a>
+</div>
+<a th:href="@{/channels}">To channels</a>
 </body>
 </html>

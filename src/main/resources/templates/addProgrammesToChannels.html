@@ -3,6 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Choose channel to add programmes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    a {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      background-color: #63ab65;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background-color: #386a3a;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    form {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b52c28;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
 <a th:href="@{/adminPage/addChannels}">Add channels</a>
@@ -18,7 +74,6 @@
     <button type="submit">Delete channel</button>
   </form>
   <hr>
-
 </div>
 </body>
 </html>

@@ -3,14 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>Channels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #63ab65;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .channel-title {
+            text-align: center;
+            font-size: 24px;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .channel-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px;
+        }
+
+        .channel-card {
+            padding: 10px;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .channel-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            text-decoration: none;
+            color: #386a3a;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .channel-card h1 {
+            color: #333;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+    </style>
 </head>
 <body>
-  <div th:each="channel: ${channels}">
-    <a th:href="@{'/channels/' + ${channel.title}}">
-      <h1 th:text="${channel.title}"></h1>
-       <p th:text="${channel.description}"></p>
-       <hr>
-    </a>
-  </div>
+<div class="container">
+    <h1 class="channel-title" style="color: #fff;">Channels</h1>
+    <div class="channel-row">
+        <div class="channel-card" th:each="channel: ${channels}">
+            <a th:href="@{'/channels/' + ${channel.title}}">
+                <h1 th:text="${channel.title}"></h1>
+                <p th:text="${channel.description}"></p>
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

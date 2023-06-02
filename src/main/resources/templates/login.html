@@ -3,16 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #63ab65;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #386a3a;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #386a3a;;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #386a3a;
+        }
+    </style>
 </head>
 <body>
-  <form method="post" th:action="@{/login}" th:object="${userAuthentication}">
+<div class="container">
+    <h1>Log in</h1>
+    <form method="post" th:action="@{/login}" th:object="${userAuthentication}">
         <label for="username">Enter username</label>
-        <input id="username" type="text" th:field="*{username}" placeholder="username"><br/>
+        <input id="username" type="text" th:field="*{username}" placeholder="Username"><br/>
 
         <label for="password">Enter password</label>
-        <input id="password" type="password" th:field="*{password}" placeholder="password"><br/>
+        <input id="password" type="password" th:field="*{password}" placeholder="Password"><br/>
         <button type="submit">Log in</button>
-  </form>
-<a th:href="@{/register}">Register new account</a>
+    </form>
+    <a class="register-link" th:href="@{/register}">Register new account</a>
+</div>
 </body>
 </html>
