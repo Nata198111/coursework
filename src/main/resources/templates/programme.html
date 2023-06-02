@@ -41,9 +41,29 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .filter-form {
+            margin-bottom: 10px;
+        }
+
+        .filter-form select {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
+<form class="filter-form" th:action="@{'/channels/' + ${channel.title} + '/filterBy'}" method="get">
+    <select name="filterParameter" onchange="this.form.submit()">
+        <option value="" disabled selected>Select filter type</option>
+        <option th:each="filterParameter : ${filterParameters}"
+                th:value="${filterParameter}"
+                th:text="${filterParameter}"></option>
+    </select>
+</form>
+
 <div class="programme-card">
     <h1 th:text="${channel.title}"></h1>
     <div th:each="programme: ${channel.getProgrammes()}" class="programme-card">
