@@ -41,6 +41,10 @@ public class AdminController {
 
     @GetMapping("/addChannels")
     public String createChannels(Model model) {
+
+        addChannelFormResponse.setTitle("");
+        addChannelFormResponse.setDescription("");
+
         model.addAttribute("addChannelFormResponse", addChannelFormResponse);
         return "addChannel";
     }
