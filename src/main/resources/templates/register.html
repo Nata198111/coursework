@@ -58,19 +58,36 @@
             text-decoration: underline;
             color: #386a3a;
         }
+
+        .validation-error {
+            color: red; /* Змінено на червоний колір */
+        }
     </style>
 </head>
 <body>
 <form method="post" th:action="@{/register}" th:object="${userRegisterResponse}">
+    <div class="validation-error-wrap">
+        <span class="validation-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+        <span class="validation-error" th:if="${usernameIsTaken != null}" th:text="${usernameIsTaken}"></span>
+    </div>
     <label for="username">Enter username</label>
     <input id="username" type="text" th:field="*{username}" placeholder="username"><br/>
+
 
     <label for="name">Enter name</label>
     <input id="name" type="text" th:field="*{name}" placeholder="name"><br/>
 
+    <div class="validation-error-wrap">
+        <span class="validation-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        <span class="validation-error" th:if="${passwordsNotEqual != null}" th:text="${passwordsNotEqual}"></span>
+    </div>
     <label for="password">Enter password</label>
     <input id="password" type="password" th:field="*{password}" placeholder="password"><br/>
 
+    <div class="validation-error-wrap">
+        <span class="validation-error" th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}"></span>
+        <span class="validation-error" th:if="${passwordsNotEqual != null}" th:text="${passwordsNotEqual}"></span>
+    </div>
     <label for="passwordConfirmation">Confirm password</label>
     <input id="passwordConfirmation" type="password" th:field="*{passwordConfirmation}" placeholder="Confirm password"><br/>
 

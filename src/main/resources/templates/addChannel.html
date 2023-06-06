@@ -42,7 +42,8 @@
     </style>
 </head>
 <body>
-<form th:method="POST" th:object="${addChannelFormResponse}" th:action="@{/adminPage/addChannels}">
+<form th:method="POST" th:object="${addChannelFormResponse}"
+      th:action="@{/adminPage/addChannels}">
     <input placeholder="title" th:field="*{title}"><br/>
     <input placeholder="description" th:field="*{description}"><br/>
     <button type="submit">Add channel</button>
